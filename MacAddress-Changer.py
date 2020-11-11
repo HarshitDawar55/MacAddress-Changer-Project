@@ -31,6 +31,7 @@ if not values.interface:
 if not values.macAddress:
     parser.error("Please Enter the New MacAddress!")
 
-print(values.interface, values.macAddress)
+# Calling the Function to Change the Mac Address
+MacChanger(values.interface, values.macAddress)
 
 
