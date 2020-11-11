@@ -33,5 +33,3 @@ if not values.macAddress:
 
 # Calling the Function to Change the Mac Address
 MacChanger(values.interface, values.macAddress)
-
-
