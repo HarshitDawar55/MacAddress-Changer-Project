@@ -1,4 +1,12 @@
 import optparse
+import subprocess
+
+
+def MacChanger(interface, MA):
+    print("[+] Changing the MacAddress of the Interface {} to {}".format(interface, MA))
+    subprocess.call(["ifconfig", interface, "down"])
+    subprocess.call(["ifconfig", interface, "hw", "ether", MA])
+    subprocess.call(["ifconfig", interface, "up"])
 
 # Initializing the Parser!
 parser = optparse.OptionParser()
@@ -23,6 +31,6 @@ if not values.interface:
 if not values.macAddress:
     parser.error("Please Enter the New MacAddress!")
 
-print("No Error Now!")
+print(values.interface, values.macAddress)
 
 
