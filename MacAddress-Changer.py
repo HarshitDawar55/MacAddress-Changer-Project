@@ -13,11 +13,7 @@ def MacChanger(interface, MA):
 def get_present_MacAddress(interface):
     ifconfig_output = subprocess.check_output(["ifconfig", values.interface])
     mac_addresses = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_output)
-
-    if mac_addresses:
-        print("Current Mac Address: {}".format(mac_addresses[0]))
-    else:
-        print("[-] Sorry! Could not found MAC Address!")
+    return mac_addresses
 
 
 # Initializing the Parser!
@@ -47,3 +43,8 @@ if not values.macAddress:
 MacChanger(values.interface, values.macAddress)
 
 # Checking the result that whether the output get changed or not!
+present_MacAddress = get_present_MacAddress(values.interface)
+if present_MacAddress:
+    print("Current Mac Address: {}".format(present_MacAddress[0]))
+else:
+    print("[-] Sorry! Could not found MAC Address!")
