@@ -39,12 +39,22 @@ if not values.interface:
 if not values.macAddress:
     parser.error("Please Enter the New MacAddress!")
 
-# Calling the Function to Change the Mac Address
-MacChanger(values.interface, values.macAddress)
-
-# Checking the result that whether the output get changed or not!
+# Fetching the current Mac Address!
 present_MacAddress = get_present_MacAddress(values.interface)
 if present_MacAddress:
     print("Current Mac Address: {}".format(present_MacAddress[0]))
 else:
     print("[-] Sorry! Could not found MAC Address!")
+
+# Calling the Function to Change the Mac Address
+try:
+    MacChanger(values.interface, values.macAddress)
+except Exception:
+    print(Exception)
+finally:
+    # Checking the result that whether the output get changed or not!
+    present_MacAddress = get_present_MacAddress(values.interface)
+    if present_MacAddress:
+        print("New Mac Address: {}".format(present_MacAddress[0]))
+    else:
+        print("[-] Sorry! Can not change Mac Address!")
