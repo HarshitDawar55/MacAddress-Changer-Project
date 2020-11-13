@@ -12,7 +12,7 @@ def MacChanger(interface, MA):
 
 def get_present_MacAddress(interface):
     ifconfig_output = subprocess.check_output(["ifconfig", values.interface])
-    mac_addresses = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_output)
+    mac_addresses = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", str(ifconfig_output))
     return mac_addresses
 
 
